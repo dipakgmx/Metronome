@@ -73,8 +73,8 @@ void MainWindow::createBPMBox()
     QHBoxLayout *hboxBPMSlider = new QHBoxLayout();
     BPMSlider = new QSlider(Qt::Horizontal , this);
     spinBox = new QSpinBox(this);
-    spinBox->setRange(0, 200);
-    BPMSlider->setRange(0,200);
+    spinBox->setRange(1, 200);
+    BPMSlider->setRange(1,200);
     connect(spinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             BPMSlider, &QSlider::setValue);
     connect(BPMSlider, static_cast<void (QSlider::*)(int)>(&QSlider::valueChanged),

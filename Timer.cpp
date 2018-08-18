@@ -20,7 +20,6 @@ void Timer::start()
 
 void Timer::setTickingValue(int val)
 {
-    qDebug() << "Ticking Value is " << val;
     this->tickingValue = 60000/ val;
     if (buttonClicked) {
         timer->start(this->tickingValue);
