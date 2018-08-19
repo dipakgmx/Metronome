@@ -52,8 +52,8 @@ void MainWindow::createMenu()
 }
 void MainWindow::createVolumeBox()
 {
-    volumeGroupBox = new QGroupBox(tr("Volume"));
-    QHBoxLayout *layout = new QHBoxLayout;
+    volumeGroupBox = new QGroupBox(tr("Volume"), this);
+    QHBoxLayout *layout = new QHBoxLayout();
     volSlider = new QSlider(Qt::Horizontal , this);
     volSlider->setRange(0,100);
     volSlider->setSliderPosition(60);
@@ -68,7 +68,7 @@ void MainWindow::createVolumeBox()
 }
 void MainWindow::createBPMBox()
 {
-    BPMGroupBox = new QGroupBox(tr("Metronome BPM"));
+    BPMGroupBox = new QGroupBox(tr("Metronome BPM"), this);
     label = new QLabel("BPM", this);
     QHBoxLayout *hboxBPMSlider = new QHBoxLayout();
     BPMSlider = new QSlider(Qt::Horizontal , this);
@@ -81,6 +81,7 @@ void MainWindow::createBPMBox()
             spinBox, &QSpinBox::setValue);
     connect(BPMSlider, static_cast<void (QSlider::*)(int)>(&QSlider::valueChanged),
             timer, &Timer::setTickingValue);
+    BPMSlider->setSliderPosition(60);
     hboxBPMSlider->addWidget(BPMSlider);
     hboxBPMSlider->addWidget(spinBox);
     hboxBPMSlider->addWidget(label);
@@ -89,7 +90,7 @@ void MainWindow::createBPMBox()
 }
 void MainWindow::createButtonBox()
 {
-    buttonBox = new QGroupBox();
+    buttonBox = new QGroupBox(this);
     QHBoxLayout *hboxButtons = new QHBoxLayout();
 
     playBtn = new QPushButton("Play", this);

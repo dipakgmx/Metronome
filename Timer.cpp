@@ -8,12 +8,13 @@ Timer::Timer(QObject *parent)
     : QObject(parent)
 {
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Timer::timerEvent);
+    timer->stop();
     buttonClicked = false;
 }
 
 void Timer::start()
 {
+    connect(timer, &QTimer::timeout, this, &Timer::timerEvent);
     timer->start(this->tickingValue);
     buttonClicked = true;
 }
@@ -28,6 +29,7 @@ void Timer::setTickingValue(int val)
 void Timer::stop()
 {
     timer->stop();
+    disconnect(timer, &QTimer::timeout, this, &Timer::timerEvent);
     buttonClicked = false;
 
 }
