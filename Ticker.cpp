@@ -3,7 +3,6 @@
 //
 
 #include "Ticker.h"
-#include <QDebug>
 Ticker::Ticker(QObject *parent)
     : QObject(parent)
 {

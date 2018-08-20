@@ -42,6 +42,7 @@ void MainWindow::createMenu()
     QAction *quit = new QAction("&Quit", this);
 
     QMenu *file;
+
     file = menuBar()->addMenu("&File");
     file->addAction(quit);
 
