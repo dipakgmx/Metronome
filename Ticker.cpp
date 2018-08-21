@@ -11,8 +11,8 @@ Ticker::Ticker(QObject *parent)
     playlist = new QMediaPlaylist(this);
 
     playlist->addMedia(QUrl::fromLocalFile(QFileInfo(".").absolutePath() + "/MediaFiles/high.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(QFileInfo(".").absolutePath() + "/MediaFiles/lw.mp3"));
-// ...
+    playlist->addMedia(QUrl::fromLocalFile(QFileInfo(".").absolutePath() + "/MediaFiles/low.mp3"));
+
     playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
     playlist->setCurrentIndex(0);
     player->setPlaylist(playlist);
