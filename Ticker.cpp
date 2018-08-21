@@ -9,8 +9,9 @@ Ticker::Ticker(QObject *parent)
     counter = 0;
     player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist(this);
-    playlist->addMedia(QUrl::fromLocalFile("/home/dipak/Documents/C/QT/Metronome/MediaFiles/high.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile("/home/dipak/Documents/C/QT/Metronome/MediaFiles/low.mp3"));
+
+    playlist->addMedia(QUrl::fromLocalFile(QFileInfo(".").absolutePath() + "/MediaFiles/high.mp3"));
+    playlist->addMedia(QUrl::fromLocalFile(QFileInfo(".").absolutePath() + "/MediaFiles/lw.mp3"));
 // ...
     playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
     playlist->setCurrentIndex(0);
