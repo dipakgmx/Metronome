@@ -77,12 +77,24 @@ void MainWindow::createBPMBox()
     spinBox = new QSpinBox(this);
     spinBox->setRange(1, 200);
     BPMSlider->setRange(1,200);
+
+    // Connect spinBox to set slider
     connect(spinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            BPMSlider, &QSlider::setValue);
-    connect(BPMSlider, static_cast<void (QSlider::*)(int)>(&QSlider::valueChanged),
-            spinBox, &QSpinBox::setValue);
-    connect(BPMSlider, static_cast<void (QSlider::*)(int)>(&QSlider::valueChanged),
-            timer, &Timer::setTickingValue);
+        [=] () {
+        BPMSlider->setValue(spinBox->value());
+    });
+
+    // Connect Slider to set BPM to spinBox
+    connect(BPMSlider, &QSlider::valueChanged,
+        [=] () {
+        spinBox->setValue(BPMSlider->value());
+    });
+
+    // Connect the BPM Slider values to the ticking value of timer class
+    connect(BPMSlider, &QSlider::valueChanged,
+            [=] () {
+                timer->setTickingValue(BPMSlider->value());
+            });
     BPMSlider->setSliderPosition(60);
     hboxBPMSlider->addWidget(BPMSlider);
     hboxBPMSlider->addWidget(spinBox);
