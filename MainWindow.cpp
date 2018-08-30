@@ -41,10 +41,12 @@ void MainWindow::createMenu()
 {
     //Create menus
     QAction *quit = new QAction("&Quit", this);
-    QMenu *file;
-    file = menuBar()->addMenu("&File");
+    QMenu *file = menuBar()->addMenu("&File");
     file->addAction(quit);
-    connect(quit, &QAction::triggered, qApp, QApplication::quit);
+    connect(quit, &QAction::triggered,
+        [=]() {
+            QApplication::quit();
+        });
 
     //Creating instances of ticker and timer here
     //Done so that the connection between ticker and timer is possible
