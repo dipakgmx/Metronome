@@ -2,6 +2,8 @@
 
 A Qt based Metronome
 
+![](./MediaFiles/screen.png)
+
 ## Installation
 
 Run the following in the extracted folder:
