@@ -1,9 +1,7 @@
-//
-// Created by dipak on 05.08.18.
-//
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#ifndef METRONOME_MAINWINDOW_H
-#define METRONOME_MAINWINDOW_H
+#include <QMainWindow>
 #include <QWidget>
 #include <QMainWindow>
 #include <QPushButton>
@@ -14,12 +12,13 @@
 #include "Timer.h"
 #include "Ticker.h"
 
-
 class MainWindow : public QMainWindow
 {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
 private:
     void setMainWindow();
@@ -27,6 +26,7 @@ private:
     void createVolumeBox();
     void createBPMBox();
     void createButtonBox();
+    void createCheckBox();
 
     QGroupBox *volumeGroupBox;
     QGroupBox *BPMGroupBox;
@@ -39,11 +39,10 @@ private:
     QLabel *volumeLabel;
     QSpinBox *spinBox;
     QLabel *label;
+    QCheckBox *firstBeatBox;
 
     Ticker* ticker;
     Timer* timer;
-
 };
 
-
-#endif //METRONOME_MAINWINDOW_H
+#endif // MAINWINDOW_H

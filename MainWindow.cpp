@@ -1,18 +1,16 @@
-//
-// Created by dipak on 05.08.18.
-//
-
-#include <QMenu>
-#include <QMenuBar>
-#include <QApplication>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include "MainWindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
 {
     setMainWindow();
 }
+
+MainWindow::~MainWindow()
+{
+
+}
+
 void MainWindow::setMainWindow()
 {
     //Creating new widget wdg to set layout manually
@@ -30,13 +28,18 @@ void MainWindow::setMainWindow()
     //Creating volume sliders
     createVolumeBox();
 
+    //Creating Stress first beat? checkbox
+    createCheckBox();
+
 
     //vbox->addStretch(1);
     vbox->addWidget(volumeGroupBox);
     vbox->addWidget(BPMGroupBox);
     vbox->addWidget(buttonBox);
+    vbox->addWidget(firstBeatBox);
     setCentralWidget(wdg);
 }
+
 void MainWindow::createMenu()
 {
     //Create menus
@@ -54,6 +57,7 @@ void MainWindow::createMenu()
     timer = new Timer(this);
     connect(timer, &Timer::timeout, ticker, &Ticker::playSound);
 }
+
 void MainWindow::createVolumeBox()
 {
     volumeGroupBox = new QGroupBox(tr("Volume"), this);
@@ -70,6 +74,7 @@ void MainWindow::createVolumeBox()
     layout->addWidget(volumeLabel);
     volumeGroupBox->setLayout(layout);
 }
+
 void MainWindow::createBPMBox()
 {
     BPMGroupBox = new QGroupBox(tr("Metronome BPM"), this);
@@ -104,6 +109,7 @@ void MainWindow::createBPMBox()
     BPMGroupBox->setLayout(hboxBPMSlider);
 
 }
+
 void MainWindow::createButtonBox()
 {
     buttonBox = new QGroupBox(this);
@@ -119,3 +125,8 @@ void MainWindow::createButtonBox()
     buttonBox->setLayout(hboxButtons);
 }
 
+void MainWindow::createCheckBox() {
+    firstBeatBox = new QCheckBox("Stress first beat?");
+    firstBeatBox->setChecked(true);
+    connect(firstBeatBox, &QCheckBox::stateChanged, ticker, &Ticker::reqToStressFirstBeat);
+}

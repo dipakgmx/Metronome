@@ -1,21 +1,21 @@
-//
-// Created by dipak on 05.08.18.
-//
+#ifndef TICKER_H
+#define TICKER_H
 
-#ifndef METRONOME_TICKER_H
-#define METRONOME_TICKER_H
-#include <QtMultimedia>
+#include <QObject>
 #include <QtWidgets>
+#include <QtMultimedia>
+
 
 class Ticker : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit Ticker(QObject *parent = nullptr);
+    explicit Ticker(QObject *parent = 0);
 
 public slots:
     void playSound();
     void setVolumeLevel(int volLevelRequest);
+    void reqToStressFirstBeat();
 
 private:
     void playHigh();
@@ -23,7 +23,7 @@ private:
     QMediaPlayer *player;
     QMediaPlaylist *playlist;
     int counter;
+    bool stressFirstBeat;
 };
 
-
-#endif //METRONOME_TICKER_H
+#endif // TICKER_H

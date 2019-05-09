@@ -1,15 +1,10 @@
-//
-// Created by dipak on 18.08.18.
-//
-
 #include "Timer.h"
-#include "Ticker.h"
-Timer::Timer(QObject *parent)
-    : QObject(parent)
+
+Timer::Timer(QObject *parent) : QObject(parent)
 {
     timer = new QTimer(this);
-    timer->stop();
-    buttonClicked = false;
+       timer->stop();
+       buttonClicked = false;
 }
 
 void Timer::start()
@@ -37,7 +32,3 @@ void Timer::timerEvent()
 {
     emit timeout();
 }
-
-
-
-
