@@ -2,6 +2,8 @@
 
 A Qt based Metronome.
 
+![](./MediaFiles/screen.png)
+
 Select appropriate branch:
  - master (built using QMake)
  - CLion_CMake (built using CMake)
