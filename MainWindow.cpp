@@ -30,11 +30,14 @@ void MainWindow::setMainWindow()
     //Creating volume sliders
     createVolumeBox();
 
+    //Creating Stress first beat? checkbox
+    createCheckBox();
 
     //vbox->addStretch(1);
     vbox->addWidget(volumeGroupBox);
     vbox->addWidget(BPMGroupBox);
     vbox->addWidget(buttonBox);
+    vbox->addWidget(firstBeatBox);
     setCentralWidget(wdg);
 }
 void MainWindow::createMenu()
@@ -119,3 +122,9 @@ void MainWindow::createButtonBox()
     buttonBox->setLayout(hboxButtons);
 }
 
+void MainWindow::createCheckBox()
+{
+    firstBeatBox = new QCheckBox("Stress first beat?");
+    firstBeatBox->setChecked(true);
+    connect(firstBeatBox, &QCheckBox::stateChanged, ticker, &Ticker::reqToStressFirstBeat);
+}

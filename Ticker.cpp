@@ -17,20 +17,27 @@ Ticker::Ticker(QObject *parent)
     playlist->setCurrentIndex(0);
     player->setPlaylist(playlist);
     player->setVolume(60);
+    stressFirstBeat = true;
 }
 
 void Ticker::playSound()
 {
-    if (counter == 0) {
-        this->playHigh();
+    if (stressFirstBeat == true) {
+        if (counter == 0) {
+            this->playHigh();
+        }
+        else
+            this->playLow();
+        if (counter >= 3)
+            counter = 0;
+        else
+            counter++;
     }
-    else
+    else {
         this->playLow();
-    if (counter == 3)
-        counter = 0;
-    else
-        counter++;
+    }
 }
+
 void Ticker::playHigh()
 {
     playlist->setCurrentIndex(0);
@@ -48,4 +55,9 @@ void Ticker::setVolumeLevel(int volLevelRequest)
     player->setVolume(volLevelRequest);
 }
 
+void Ticker::reqToStressFirstBeat()
+{
+    stressFirstBeat = !stressFirstBeat;
+    counter = 0;
+}
 

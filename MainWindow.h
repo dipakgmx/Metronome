@@ -27,6 +27,7 @@ private:
     void createVolumeBox();
     void createBPMBox();
     void createButtonBox();
+    void createCheckBox();
 
     QGroupBox *volumeGroupBox;
     QGroupBox *BPMGroupBox;
@@ -39,6 +40,7 @@ private:
     QLabel *volumeLabel;
     QSpinBox *spinBox;
     QLabel *label;
+    QCheckBox *firstBeatBox;
 
     Ticker* ticker;
     Timer* timer;

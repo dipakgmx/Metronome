@@ -16,6 +16,7 @@ public:
 public slots:
     void playSound();
     void setVolumeLevel(int volLevelRequest);
+    void reqToStressFirstBeat();
 
 private:
     void playHigh();
@@ -23,6 +24,7 @@ private:
     QMediaPlayer *player;
     QMediaPlaylist *playlist;
     int counter;
+    bool stressFirstBeat;
 };
 
 
